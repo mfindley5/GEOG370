@@ -1,0 +1,15 @@
+var = StudentRecCenter = {
+    "type":"FeatureCollection",
+    "features":[
+        {"type":"Feature",
+        "properties":{},
+        "geometry":{
+         "type":"Point",
+         "coordinates":[
+            -79.04704928398132,
+            35.90911737779728
+        ]
+    }
+}
+]
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework 5 Map</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+
+   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+
+   <script src = "./data/old_well_4326.geojson"></script>
+
+</head>
+<body>
+
+    <div id="mapid"></div>
+<style>
+    #mapid{width: 900px; height: 500px;}
+</style>
+
+<script>
+    var map = L.map('mapid'). setView([35.91,-79.05], 17);
+    L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {}).addTo(map)
+
+    var  IconI = L.icon({
+        iconUrl: 'https://www.pngitem.com/pimgs/m/96-964776_transparent-open-books-clipart-clip-art-of-book.png',
+        iconSize: [50,50],
+        popupAnchor: [0,0]
+    });
+
+
+    var Popup1 = "Davis Library<br/><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Davis_Library_at_The_University_of_North_Carolina_at_Chapel_Hill.JPG/220px-Davis_Library_at_The_University_of_North_Carolina_at_Chapel_Hill.JPG'width='100px'/>";
+
+    L.marker([35.911333,-79.047778],{icon:IconI}).addTo(map)
+        .bindPopup(Popup1)
+        //.openPopup();
+
+    var IconII = L.icon({
+        iconUrl:'https://www.pikpng.com/pngl/m/30-302361_weight-training-dumbbell-barbell-fitness-centre-weights-clipart.png',
+        iconSize: [50,50],
+        popupAnchor: [0,0]
+    });
+
+
+    var Popup2 = "Student Rec Center<br/><img src='https://campusrec.unc.edu/wp-content/uploads/2015/12/SRC_Frontdoor1-585x390.jpg'width=100px'/>";
+
+    L.marker([35.909042,-79.047339],{icon:IconII}).addTo(map)
+        .bindPopup(Popup2)
+        //.openPopup();
+
+    var IconIII = L.icon({
+        iconUrl: 'https://www.pinclipart.com/picdir/middle/0-3131_pictures-of-a-hospital-clip-art-of-hospital.png',
+        iconSize: [50,50],
+        popupAnchor: [0,0]
+    });
+
+    var Popup3 = "UNC Hospital<br/><img src='https://chapelboromedia.s3.amazonaws.com/uploads/2019/07/17141616/UNC-Hospitals-3.png'width=100px'/>";
+
+    L.marker([35.905226,-79.050612], {icon:IconIII}).addTo(map)
+        .bindPopup(Popup3)
+        //.openPopup();
+
+
+   
+
+    var customPopup = "UNC Well<br/><img src='https://global.unc.edu/files/2020/02/spring_4_09__12_054-768x511.jpg'width='100px'/>";
+
+    L.geoJSON(uncwell, { // a
+    pointToLayer: function (feature, latlng) { // b
+    return L.marker(latlng, {icon: uncIcon});}}) // c
+    .bindPopup(customPopup) // d
+    .addTo(map); //
+
+   
+
+</script>
+
+    
+</body>
+</html>
